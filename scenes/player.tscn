@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dm4llwt7k3v50"]
 
 [ext_resource type="Script" uid="uid://cwktvwf3qt0rv" path="res://scripts/player.gd" id="1_scr"]
 [ext_resource type="Texture2D" uid="uid://dio773ks8cmym" path="res://artes/Personagem e Inimigos/Player/Sprites/idle/player-idle-1.png" id="2_idle1"]
@@ -7,15 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://c48q7ttk08tja" path="res://artes/Personagem e Inimigos/Player/Sprites/idle/player-idle-4.png" id="5_idle4"]
 [ext_resource type="Texture2D" uid="uid://brbtgssq7e6s6" path="res://artes/Personagem e Inimigos/Player/Sprites/jump/player-jump-1.png" id="6_jump1"]
 [ext_resource type="Texture2D" uid="uid://b586vgr3uvj68" path="res://artes/Personagem e Inimigos/Player/Sprites/jump/player-jump-2.png" id="7_jump2"]
+[ext_resource type="Texture2D" uid="uid://dv4bosvltav47" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-1.png" id="8_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://bxyh1b8406tv" path="res://artes/Coletaveis e Efeitos/Sunnyland FX/Sprites/item-feedback/item-feedback-1.png" id="8_fx"]
-
-[sub_resource type="ParticleProcessMaterial" id="Particles_brilho"]
-direction = Vector3(0, -1, 0)
-spread = 45.0
-initial_velocity_min = 30.0
-initial_velocity_max = 60.0
-scale_min = 0.8
-scale_max = 1.4
+[ext_resource type="Texture2D" uid="uid://cxn0a1ny7g50q" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-2.png" id="9_oprun"]
+[ext_resource type="Texture2D" uid="uid://ogiticsemcbg" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-3.png" id="10_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://cn6t3y1fbdnan" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-4.png" id="11_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://d1idkqlu6216w" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-5.png" id="12_fulsm"]
+[ext_resource type="Texture2D" uid="uid://ccflwesxgiodv" path="res://artes/Personagem e Inimigos/Player/Sprites/run/player-run-6.png" id="13_4r5pv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_player"]
 animations = [{
@@ -32,7 +30,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_idle4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 6.0
 }, {
@@ -43,27 +41,63 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_jump2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a8ls1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4r5pv")
+}],
+"loop": 1,
+"name": &"run",
 "speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="Rect_player"]
-size = Vector2(18, 30)
+size = Vector2(18, 22)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="ParticleProcessMaterial" id="Particles_brilho"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.8
+scale_max = 1.4
+
+[node name="Player" type="CharacterBody2D" unique_id=2015556296 groups=["player"]]
 script = ExtResource("1_scr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1038822452]
+position = Vector2(1.25, 1)
+scale = Vector2(0.95454544, 0.9661458)
 sprite_frames = SubResource("SpriteFrames_player")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.7509799
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=370999496]
+position = Vector2(1, 5)
 shape = SubResource("Rect_player")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=444276319]
 limit_left = 0
 limit_top = 0
 limit_right = 1280
@@ -71,11 +105,11 @@ limit_bottom = 272
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="Particulas" type="GPUParticles2D" parent="."]
+[node name="Particulas" type="GPUParticles2D" parent="." unique_id=1849979056]
 emitting = false
 amount = 10
-process_material = SubResource("Particles_brilho")
 texture = ExtResource("8_fx")
 lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("Particles_brilho")
