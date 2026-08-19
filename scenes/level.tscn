@@ -83,7 +83,7 @@ position = Vector2(640, 300)
 
 [node name="PauseMenu" parent="." unique_id=782692046 instance=ExtResource("12_pause")]
 
-[node name="CharacterBody2D" parent="." unique_id=414966492 instance=ExtResource("13_64w2a")]
+[node name="Sapo" parent="." unique_id=414966492 instance=ExtResource("13_64w2a")]
 position = Vector2(803, 178)
 
 [editable path="Placa"]
