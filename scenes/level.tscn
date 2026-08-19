@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dm4llwt7k3v50" path="res://scenes/player.tscn" id="6_player"]
 [ext_resource type="PackedScene" path="res://scenes/placa.tscn" id="7_placa"]
 [ext_resource type="PackedScene" uid="uid://dirpvn4q6s02i" path="res://scenes/cereja.tscn" id="8_cereja"]
-[ext_resource type="PackedScene" path="res://scenes/inimigo.tscn" id="9_inimigo"]
+[ext_resource type="PackedScene" uid="uid://c526ioqdthqs3" path="res://scenes/inimigo.tscn" id="9_inimigo"]
 [ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="10_killzone"]
 [ext_resource type="PackedScene" uid="uid://cehldju8r0g0w" path="res://scenes/hud.tscn" id="11_hud"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="12_pause"]
+[ext_resource type="PackedScene" uid="uid://dbdm55jlb4kr3" path="res://scenes/inimigo2.tscn" id="13_64w2a"]
 
 [node name="Level" type="Node2D" unique_id=1324155158]
 
@@ -81,5 +82,8 @@ position = Vector2(640, 300)
 [node name="HUD" parent="." unique_id=1259305448 instance=ExtResource("11_hud")]
 
 [node name="PauseMenu" parent="." unique_id=782692046 instance=ExtResource("12_pause")]
+
+[node name="CharacterBody2D" parent="." unique_id=414966492 instance=ExtResource("13_64w2a")]
+position = Vector2(803, 178)
 
 [editable path="Placa"]
