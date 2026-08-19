@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dbdm55jlb4kr3"]
+
+[ext_resource type="Script" uid="uid://br0xqvs0nlcn4" path="res://inimigo_2.gd" id="1_f134l"]
+[ext_resource type="Texture2D" uid="uid://ce3drompgarey" path="res://artes/Personagem e Inimigos/frog/Sprites/idle/frog-idle-1.png" id="2_kkofb"]
+[ext_resource type="Texture2D" uid="uid://hdy30jxyqft2" path="res://artes/Personagem e Inimigos/frog/Sprites/idle/frog-idle-2.png" id="3_p6opy"]
+[ext_resource type="Texture2D" uid="uid://dqd74fdi2m6q" path="res://artes/Personagem e Inimigos/frog/Sprites/idle/frog-idle-3.png" id="4_d8ng6"]
+[ext_resource type="Texture2D" uid="uid://cfh6ym7y4qvr7" path="res://artes/Personagem e Inimigos/frog/Sprites/idle/frog-idle-4.png" id="5_cqt0k"]
+[ext_resource type="Texture2D" uid="uid://cnk0gqng8cuxl" path="res://artes/Personagem e Inimigos/frog/Sprites/jump/frog-jump-1.png" id="6_ip1bn"]
+[ext_resource type="Texture2D" uid="uid://cjvd4rwr0ffg4" path="res://artes/Personagem e Inimigos/frog/Sprites/jump/frog-jump-2.png" id="7_oydhi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfu4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kkofb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p6opy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d8ng6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cqt0k")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ip1bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oydhi")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gj8h"]
+size = Vector2(26, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wue4d"]
+size = Vector2(26, 20)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=414966492]
+script = ExtResource("1_f134l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1311634606]
+sprite_frames = SubResource("SpriteFrames_tfu4d")
+animation = &"jump"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049061370]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_6gj8h")
+
+[node name="RayRight" type="RayCast2D" parent="." unique_id=1405556955]
+position = Vector2(0, 4)
+target_position = Vector2(20, 0)
+
+[node name="RayLeft" type="RayCast2D" parent="." unique_id=67191979]
+position = Vector2(0, 4)
+target_position = Vector2(-20, 0)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=648499118]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=634538569]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_wue4d")

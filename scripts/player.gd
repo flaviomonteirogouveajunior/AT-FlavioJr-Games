@@ -1,7 +1,7 @@
 extends CharacterBody2D
 ## Player do jogo de plataforma.
 
-const SPEED: float = 200.0
+var SPEED: float = 200.0
 var JUMP_VELOCITY: float = -400.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -14,11 +14,14 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	var direction: float = Input.get_axis("move_left", "move_right")
-	if direction != 0.0:
+	var pode_andar: bool = animated_sprite.sprite_frames.has_animation("run")
+	
+	if direction != 0.0 and pode_andar:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, SPEED)
 
+	_update_animation(direction, pode_andar)
 	move_and_slide()
 func brilhar() -> void:
 	$Particulas.restart()
@@ -28,7 +31,7 @@ func _update_animation(direction: float, pode_andar: bool) -> void:
 
 	if not is_on_floor():
 		animated_sprite.play("jump")
-	elif direction != 0.0:
+	elif direction != 0.0 and pode_andar:
 		animated_sprite.play("run")
 	else:
 		animated_sprite.play("idle")

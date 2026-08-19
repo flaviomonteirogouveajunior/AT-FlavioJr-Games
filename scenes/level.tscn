@@ -60,6 +60,9 @@ position = Vector2(504, 118)
 [node name="Cereja5" parent="." unique_id=229085077 instance=ExtResource("8_cereja")]
 position = Vector2(1128, 182)
 
+[node name="Player" parent="." unique_id=2015556296 instance=ExtResource("6_player")]
+position = Vector2(22, 174)
+
 [node name="Placa" parent="." unique_id=1807670692 instance=ExtResource("7_placa")]
 position = Vector2(1200, 182)
 
@@ -78,8 +81,5 @@ position = Vector2(640, 300)
 [node name="HUD" parent="." unique_id=1259305448 instance=ExtResource("11_hud")]
 
 [node name="PauseMenu" parent="." unique_id=782692046 instance=ExtResource("12_pause")]
-
-[node name="Player" parent="." unique_id=2015556296 instance=ExtResource("6_player")]
-position = Vector2(22, 174)
 
 [editable path="Placa"]
